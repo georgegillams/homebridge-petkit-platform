@@ -25,6 +25,46 @@ Homebridge custom plugin for controlling all your Petkit devices in HomeKit.
   1. [Use the Petkit Homebridge Plugin](https://github.com/jubepue/homebridge-petkit-platform/wiki/How-to-Use-Petkit-Homebridge-Plugin)
   2. [How to Get Logs](https://github.com/jubepue/homebridge-petkit-platform/wiki/How-To-Get-Logs)
 
+## Feeding / fan speed
+
+Feeders appear as a fan accessory. Set the fan speed to choose the portion, then toggle **Food Dispenser** to dispense.
+
+### Fresh Element Solo (D4)
+
+The Solo API only accepts 10–50g portions. Fan speed maps in 20% steps:
+
+| Fan speed | Grams |
+| --------- | ----- |
+| 1–20% | 10g |
+| 21–40% | 20g |
+| 41–60% | 30g |
+| 61–80% | 40g |
+| 81–100% | 50g |
+
+On Solo, the fan control steps in 20% increments so each notch is a valid portion. Use **Default Fan Speed** in the plugin settings to choose the startup portion.
+
+### Other feeder models
+
+Other feeders use the original plugin formula:
+
+`grams = floor(speed% / 10) × 5`
+
+Each 10% of fan speed adds 5g (0% dispenses nothing):
+
+| Fan speed | Grams |
+| --------- | ----- |
+| 1–9% | 0g |
+| 10–19% | 5g |
+| 20–29% | 10g |
+| 30–39% | 15g |
+| 40–49% | 20g |
+| 50–59% | 25g |
+| 60–69% | 30g |
+| 70–79% | 35g |
+| 80–89% | 40g |
+| 90–99% | 45g |
+| 100% | 50g |
+
 ## Set up the development environment
 
 ```

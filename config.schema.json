@@ -2,8 +2,8 @@
   "pluginAlias": "PetkitPlatform",
   "pluginType": "platform",
   "singular": true,
-  "headerDisplay": "For documentation please see https://github.com/jubepue/petkit-homebridge .",
-  "footerDisplay": "",
+  "headerDisplay": "For documentation please see https://github.com/jubepue/homebridge-petkit-platform .",
+  "footerDisplay": "Tip: if login fails, check that **Country Code** matches your Petkit account region (e.g. 44 for UK → Europe, 1 for US).",
   "schema": {
     "type": "object",
     "properties": {
@@ -15,7 +15,7 @@
         "description": "You shouldn't need to change this."
       },
       "options": {
-        "title": "",
+        "title": "Petkit Account",
         "type": "object",
         "required": true,
         "properties": {
@@ -40,8 +40,47 @@
             "title": "Country Code",
             "type": "number",
             "default": "",
-            "description": "Your two integer country code",
+            "description": "Your phone country calling code (e.g. 44 for UK, 1 for US). Used to pick the API region.",
             "required": true
+          },
+          "defaultFanSpeed": {
+            "title": "Default Fan Speed (%)",
+            "type": "number",
+            "default": 20,
+            "description": "Initial fan speed when Homebridge starts (also the portion used if you only toggle Food Dispenser). See the [README](https://github.com/jubepue/homebridge-petkit-platform/blob/master/README.md#feeding--fan-speed) for how fan speed maps to grams per model.",
+            "required": false,
+            "oneOf": [
+              {
+                "title": "20%",
+                "enum": [
+                  20
+                ]
+              },
+              {
+                "title": "40%",
+                "enum": [
+                  40
+                ]
+              },
+              {
+                "title": "60%",
+                "enum": [
+                  60
+                ]
+              },
+              {
+                "title": "80%",
+                "enum": [
+                  80
+                ]
+              },
+              {
+                "title": "100%",
+                "enum": [
+                  100
+                ]
+              }
+            ]
           },
           "debug": {
             "title": "Enable Debug Logging",
