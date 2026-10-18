@@ -136,7 +136,7 @@ class PetkitPlatform {
 
   //refresh Accessorie status
   async refreshDeviceStates(message) {
-    const uuid = this.api.hap.uuid.generate(message.id);
+    const uuid = this.api.hap.uuid.generate(String(message.id));
     const deviceAccessorie = this.deviceAccessories.get(uuid);
     if (deviceAccessorie) {
       deviceAccessorie.updateState(message);
@@ -163,16 +163,6 @@ class PetkitPlatform {
       callback();
     });
     this.accessories.set(accessory.UUID, accessory);
-  }
-
-  // Sample function to show how developer can remove accessory dynamically from outside event
-  removeAccessory(accessory) {
-    if (accessory) {
-      this.log.info(`Remove Accessory ${accessory.displayName}`);
-      this.api.unregisterPlatformAccessories(pluginName, platformName, [accessory]);
-      this.accessories.delete(accessory.UUID);
-      this.deviceAccessories.delete(accessory.UUID);
-    }
   }
 
 }

@@ -21,9 +21,8 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "qs": "^6.11.0",
     "crypto-js": "^4.0.0",
-    "uuid": "^8.3.2"
+    "qs": "^6.11.0"
   },
   "repository": {
     "type": "git",

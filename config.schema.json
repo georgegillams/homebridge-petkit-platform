@@ -45,40 +45,20 @@
           "defaultFanSpeed": {
             "title": "Default Fan Speed (%)",
             "type": "number",
-            "default": 20,
-            "description": "Initial fan speed when Homebridge starts (also the portion used if you only toggle Food Dispenser). See the [README](https://github.com/jubepue/homebridge-petkit-platform/blob/master/README.md#feeding--fan-speed) for how fan speed maps to grams per model.",
+            "default": 40,
+            "description": "Initial fan speed when Homebridge starts (also the portion used if you only toggle Food Dispenser). Default 40% → 20g. 10g-step models (D4/D4H) snap to the nearest 20%. See the [README](https://github.com/jubepue/homebridge-petkit-platform/blob/master/README.md#feeding-in-homekit).",
             "required": false,
             "oneOf": [
-              {
-                "title": "20%",
-                "enum": [
-                  20
-                ]
-              },
-              {
-                "title": "40%",
-                "enum": [
-                  40
-                ]
-              },
-              {
-                "title": "60%",
-                "enum": [
-                  60
-                ]
-              },
-              {
-                "title": "80%",
-                "enum": [
-                  80
-                ]
-              },
-              {
-                "title": "100%",
-                "enum": [
-                  100
-                ]
-              }
+              { "title": "10% (5g)", "enum": [10] },
+              { "title": "20% (10g)", "enum": [20] },
+              { "title": "30% (15g)", "enum": [30] },
+              { "title": "40% (20g)", "enum": [40] },
+              { "title": "50% (25g)", "enum": [50] },
+              { "title": "60% (30g)", "enum": [60] },
+              { "title": "70% (35g)", "enum": [70] },
+              { "title": "80% (40g)", "enum": [80] },
+              { "title": "90% (45g)", "enum": [90] },
+              { "title": "100% (50g)", "enum": [100] }
             ]
           },
           "debug": {
