@@ -19,51 +19,32 @@ If you like Petkit Homebridge Plugin - give it a star, or fork it and contribute
 
 </span>
 
-Homebridge custom plugin for controlling all your Petkit devices in HomeKit.
+Homebridge custom plugin for controlling Petkit feeders in HomeKit.
+
+## Supported devices
+
+| Model | API type | Portion sizes |
+| ----- | -------- | ------------- |
+| Fresh Element | `Feeder` | 5–50g in 5g steps |
+| Fresh Element Mini | `FeederMini` | 5–50g in 5g steps |
+| Fresh Element Infinity | `D3` | 5–50g in 5g steps |
+| Fresh Element Solo | `D4` | 10–50g in 10g steps |
+| YumShare Solo | `D4H` | 10–50g in 10g steps |
+| Fresh Element Gemini | `D4s` | 5–50g in 5g steps (limited) |
+| YumShare Dual-Hopper | `D4SH` | 5–50g in 5g steps (limited) |
+
+**Limited support:** dual-hopper models (`D4s`, `D4SH`) are recognized and can dispense, but hopper selection and other dual-hopper features are not exposed in HomeKit. Behavior may be incomplete compared to the Petkit app.
+
+### Feeding in HomeKit
+
+Set the accessory fan speed, then toggle **Food Dispenser**.
+
+- **D4 / D4H:** fan steps of 20% → 10 / 20 / 30 / 40 / 50g
+- **Feeder / FeederMini / D3 / D4s / D4SH:** fan steps of 10% → 5 / 10 / 15 / … / 50g (`grams = floor(speed% / 10) × 5`)
 
 ## Preparation
   1. [Use the Petkit Homebridge Plugin](https://github.com/jubepue/homebridge-petkit-platform/wiki/How-to-Use-Petkit-Homebridge-Plugin)
   2. [How to Get Logs](https://github.com/jubepue/homebridge-petkit-platform/wiki/How-To-Get-Logs)
-
-## Feeding / fan speed
-
-Feeders appear as a fan accessory. Set the fan speed to choose the portion, then toggle **Food Dispenser** to dispense.
-
-### Fresh Element Solo (D4)
-
-The Solo API only accepts 10–50g portions. Fan speed maps in 20% steps:
-
-| Fan speed | Grams |
-| --------- | ----- |
-| 1–20% | 10g |
-| 21–40% | 20g |
-| 41–60% | 30g |
-| 61–80% | 40g |
-| 81–100% | 50g |
-
-On Solo, the fan control steps in 20% increments so each notch is a valid portion. Use **Default Fan Speed** in the plugin settings to choose the startup portion.
-
-### Other feeder models
-
-Other feeders use the original plugin formula:
-
-`grams = floor(speed% / 10) × 5`
-
-Each 10% of fan speed adds 5g (0% dispenses nothing):
-
-| Fan speed | Grams |
-| --------- | ----- |
-| 1–9% | 0g |
-| 10–19% | 5g |
-| 20–29% | 10g |
-| 30–39% | 15g |
-| 40–49% | 20g |
-| 50–59% | 25g |
-| 60–69% | 30g |
-| 70–79% | 35g |
-| 80–89% | 40g |
-| 90–99% | 45g |
-| 100% | 50g |
 
 ## Set up the development environment
 

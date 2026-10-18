@@ -3,7 +3,6 @@
   "pluginType": "platform",
   "singular": true,
   "headerDisplay": "For documentation please see https://github.com/jubepue/homebridge-petkit-platform .",
-  "footerDisplay": "Tip: if login fails, check that **Country Code** matches your Petkit account region (e.g. 44 for UK → Europe, 1 for US).",
   "schema": {
     "type": "object",
     "properties": {
