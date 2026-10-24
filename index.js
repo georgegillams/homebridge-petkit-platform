@@ -64,13 +64,11 @@ class PetkitPlatform {
     try {
       devices = await api.getDeviceList();
       this.log.info(`Found ${devices.length} Petkit device(s).`);
+      for (const device of devices) {
+        this.addAccessory(device);
+      }
     } catch (e) {
-      this.log.error(`Failed to get device information. ${e && e.message ? e.message : e}`);
-      return;
-    }
-
-    for (const device of devices) {
-      this.addAccessory(device);
+      this.log.error(`Failed to get device information. Will retry on the next poll. ${e && e.message ? e.message : e}`);
     }
 
     let listener = new PetkitListener(api, this.log);
@@ -139,7 +137,7 @@ class PetkitPlatform {
     const uuid = this.api.hap.uuid.generate(String(message.id));
     const deviceAccessorie = this.deviceAccessories.get(uuid);
     if (deviceAccessorie) {
-      deviceAccessorie.updateState(message);
+      deviceAccessorie.updateAccessory(message);
     }
   }
 
